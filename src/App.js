@@ -5,8 +5,11 @@ import Header from "./component/Header";
 import Home from "./component/Home";
 import Favourite from "./component/Favourite";
 import "bootstrap/dist/css/bootstrap.min.css";
+import LoginButton from "./component/LoginButton";
+import Footer from "./component/Footer";
 export class App extends Component {
 	render() {
+		const { user, isAuthenticated, isLoading } = this.props.auth0;
 		return (
 			<div>
 				<Router>
@@ -15,12 +18,13 @@ export class App extends Component {
             renders the first one that matches the current URL. */}
 					<Switch>
 						<Route exact path="/">
-							<Home />
+							{isAuthenticated ? <Home /> : <LoginButton />}
 						</Route>
 						<Route exact path="/favourite">
-							<Favourite />
+							{isAuthenticated ? <Favourite /> : <LoginButton />}
 						</Route>
 					</Switch>
+					<Footer />
 				</Router>
 			</div>
 		);
