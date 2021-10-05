@@ -12,7 +12,9 @@ export class Home extends Component {
 	}
 
 	componentDidMount = async () => {
-		const requet = await axios.get(`http://localhost:8001/watch`);
+		const requet = await axios.get(
+			`https://entranceexam401-anasweh.herokuapp.com/watch`
+		);
 		this.setState({
 			watchApiData: requet.data,
 			showWatchData: true,
@@ -20,7 +22,10 @@ export class Home extends Component {
 	};
 
 	addToFavourite = async (obj) => {
-		axios.post(`http://localhost:8001/watch/favourite`, obj);
+		axios.post(
+			`https://entranceexam401-anasweh.herokuapp.com/watch/favourite`,
+			obj
+		);
 		console.log(obj);
 	};
 

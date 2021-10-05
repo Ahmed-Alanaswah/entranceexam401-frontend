@@ -20,7 +20,9 @@ export class Favourite extends Component {
 		};
 	}
 	componentDidMount = async () => {
-		const requet = await axios.get(`http://localhost:8001/watch/favourite`);
+		const requet = await axios.get(
+			`https://entranceexam401-anasweh.herokuapp.com/watch/favourite`
+		);
 		this.setState({
 			watchFavApiData: requet.data,
 			showFavWatchData: true,
@@ -29,7 +31,7 @@ export class Favourite extends Component {
 
 	deleteFavourite = async (slug) => {
 		const request = await axios.delete(
-			`http://localhost:8001/watch/favourite/${slug}`
+			`https://entranceexam401-anasweh.herokuapp.com/watch/favourite/${slug}`
 		);
 		this.setState({
 			watchFavApiData: request.data,
@@ -60,7 +62,7 @@ export class Favourite extends Component {
 		};
 		console.log(update);
 		const request = await axios.put(
-			`http://localhost:8001/watch/favourite/${this.state.slug}`,
+			`https://entranceexam401-anasweh.herokuapp.com/watch/favourite/${this.state.slug}`,
 			update
 		);
 		this.setState({
